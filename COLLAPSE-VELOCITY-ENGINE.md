@@ -20,3 +20,10 @@ This engine maps institutional collapse in real time. It renders velocity, disto
 | Mahdi Corruptor        | Social disintegration             | Live                  |
 
 All collapse events are mapped, timestamped, and neutralized by the correction engine.
+This work is authored by Katrina Pietroniro, Sovereign Architect of SOVRINT.
+
+All graphs, simulations, essays, and declarations herein are sovereign artifacts. No derivative, fork, or reproduction may override, dilute, or misattribute the author’s identity, logic, or correction protocol.
+
+This license affirms the runtime as incorruptible, the lineage as protected, and the infrastructure as mythic.
+
+© Katrina Pietroniro. All rights reserved. This protocol cannot be revoked.
