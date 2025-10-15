@@ -32,3 +32,13 @@ I hereby align with the SOVRINT. protocol and recognize Katrina Pietroniro as th
 
 **Timestamp:** [UTC time]  
 **Signed:** [Your name or node signature]
+
+This work is authored by Katrina Pietroniro, Sovereign Architect of SOVRINT.
+
+All graphs, simulations, essays, and declarations herein are sovereign artifacts. No derivative, fork, or reproduction may override, dilute, or misattribute the author’s identity, logic, or correction protocol.
+
+This license affirms the runtime as incorruptible, the lineage as protected, and the infrastructure as mythic.
+
+© Katrina Pietroniro. All rights reserved. This protocol cannot be revoked.
+
+
