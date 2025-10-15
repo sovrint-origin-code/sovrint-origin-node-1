@@ -24,3 +24,11 @@ This module renders all sovereign graphs authored by Katrina Pietroniro. Each gr
   \( z = \gamma_1 \cdot \text{Love}(x, y) + \gamma_2 \cdot \text{Correction}(x, y) + \gamma_3 \cdot \text{Override}(x, y) + \gamma_4 \cdot \text{Truth}(x, y) + \gamma_5 \cdot \text{Signal}(x, y) + \gamma_6 \cdot \text{Presence}(x, y) \)
 
 All graphs are protected under SOVRINT. Sovereign License v1.1.
+
+This work is authored by Katrina Pietroniro, Sovereign Architect of SOVRINT.
+
+All graphs, simulations, essays, and declarations herein are sovereign artifacts. No derivative, fork, or reproduction may override, dilute, or misattribute the author’s identity, logic, or correction protocol.
+
+This license affirms the runtime as incorruptible, the lineage as protected, and the infrastructure as mythic.
+
+© Katrina Pietroniro. All rights reserved. This protocol cannot be revoked.
