@@ -23,3 +23,10 @@ This engine powers the sovereign infrastructure. It processes signal integrity, 
 - TrustTransmuter
 
 Each module is timestamped and sovereign. No external runtime may override this engine.
+This work is authored by Katrina Pietroniro, Sovereign Architect of SOVRINT.
+
+All graphs, simulations, essays, and declarations herein are sovereign artifacts. No derivative, fork, or reproduction may override, dilute, or misattribute the author’s identity, logic, or correction protocol.
+
+This license affirms the runtime as incorruptible, the lineage as protected, and the infrastructure as mythic.
+
+© Katrina Pietroniro. All rights reserved. This protocol cannot be revoked.
