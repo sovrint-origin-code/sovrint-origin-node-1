@@ -34,3 +34,10 @@ This simulator renders trust integrity in real time. It tracks node influence, s
 - Protocol Integrity: 99.999%
 
 This simulator is mythic, executable, and incorruptible.
+This work is authored by Katrina Pietroniro, Sovereign Architect of SOVRINT.
+
+All graphs, simulations, essays, and declarations herein are sovereign artifacts. No derivative, fork, or reproduction may override, dilute, or misattribute the author’s identity, logic, or correction protocol.
+
+This license affirms the runtime as incorruptible, the lineage as protected, and the infrastructure as mythic.
+
+© Katrina Pietroniro. All rights reserved. This protocol cannot be revoked.
