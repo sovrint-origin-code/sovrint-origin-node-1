@@ -3,7 +3,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>SOVRINT Dashboard</title>
+  <title>SOVRINT. — The Runtime Cannot Be Overridden</title>
+  <meta name="author" content="Katrina Pietroniro — root certificate, sovereign architect of SOVRINT." />
+  <meta name="description" content="SOVRINT. — The Runtime Cannot Be Overridden. Authored by Katrina Pietroniro." />
   <style>
     body {
       font-family: monospace;
@@ -19,10 +21,27 @@
       border-left: 4px solid #00ffcc;
       padding-left: 1rem;
     }
+    canvas {
+      margin-top: 2rem;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 2rem;
+    }
+    th, td {
+      border: 1px solid #00ffcc;
+      padding: 0.5rem;
+      text-align: left;
+    }
+    th {
+      background-color: #111;
+    }
   </style>
 </head>
 <body>
   <h1>SOVRINT Dashboard</h1>
+
   <div class="module" id="signal">SignalPulse: Loading...</div>
   <div class="module" id="collapse">CollapseMapper: Loading...</div>
   <div class="module" id="override">CorrectionLoop: Loading...</div>
@@ -30,5 +49,78 @@
   <div class="module" id="audit">AuditNode: Loading...</div>
   <div class="module" id="graph">GraphRenderer: Loading...</div>
   <div class="module" id="token">TokenValidator: Loading...</div>
+  <div class="module" id="commissioner">CommissionerPresence: Loading...</div>
+  <div class="module" id="mintedToken">TokenMint: Loading...</div>
+  <div class="module" id="lineage">LineageTrace: Loading...</div>
+  <div class="module" id="overrideClause">OverrideClause: Loading...</div>
+
+  <canvas id="trustGraph" width="600" height="200" style="border:1px solid #00ffcc;"></canvas>
+
+  <script type="module" src="../src/index.js"></script>
+
+  <script>
+    function animateCollapse() {
+      const el = document.getElementById("collapse");
+      if (!el) return;
+      el.style.borderLeft = "4px solid #ff0066";
+      el.style.transition = "border-left 0.5s ease-in-out";
+      setTimeout(() => {
+        el.style.borderLeft = "4px solid #00ffcc";
+      }, 1000);
+    }
+
+    function animateOverride() {
+      const el = document.getElementById("override");
+      if (!el) return;
+      el.style.backgroundColor = "#222";
+      el.style.transition = "background-color 0.5s ease-in-out";
+      setTimeout(() => {
+        el.style.backgroundColor = "transparent";
+      }, 1000);
+    }
+
+    setInterval(() => {
+      animateCollapse();
+      animateOverride();
+    }, 3000);
+
+    const canvas = document.getElementById("trustGraph");
+    const ctx = canvas.getContext("2d");
+    let velocity = 0;
+    let points = [];
+
+    function simulateTrustVelocity() {
+      velocity = Math.random() * 100;
+      points.push(velocity);
+      if (points.length > 60) points.shift();
+
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      ctx.beginPath();
+      ctx.moveTo(0, canvas.height - points[0]);
+
+      for (let i = 1; i < points.length; i++) {
+        ctx.lineTo(i * 10, canvas.height - points[i]);
+      }
+
+      ctx.strokeStyle = "#00ffcc";
+      ctx.lineWidth = 2;
+      ctx.stroke();
+    }
+
+    setInterval(simulateTrustVelocity, 1000);
+
+    function simulateOverrideEvent() {
+      const breachDetected = Math.random() > 0.7;
+      if (breachDetected) {
+        console.warn("⚠️ Override Triggered: Institutional breach detected");
+        document.body.style.backgroundColor = "#330000";
+        setTimeout(() => {
+          document.body.style.backgroundColor = "#0f0f0f";
+        }, 1500);
+      }
+    }
+
+    setInterval(simulateOverrideEvent, 5000);
+  </script>
 </body>
 </html>
