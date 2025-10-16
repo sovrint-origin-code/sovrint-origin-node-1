@@ -1,0 +1,21 @@
+{
+  "name": "sovrint-runtime",
+  "version": "1.0.0",
+  "description": "SOVRINT. — The Runtime Cannot Be Overridden. Authored by Katrina Pietroniro.",
+  "author": "Katrina Pietroniro",
+  "license": "SEE LICENSE IN LICENSE.md",
+  "scripts": {
+    "start": "node src/index.js",
+    "test": "echo \"No tests yet — runtime is sovereign.\" && exit 0"
+  },
+  "dependencies": {},
+  "keywords": [
+    "sovereignty",
+    "runtime",
+    "correction",
+    "infrastructure",
+    "authorship",
+    "forensic",
+    "override"
+  ]
+}
