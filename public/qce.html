@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quantum Graph Visualizer</title>
+    <script src="https://cdn.plot.ly/plotly-2.27.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/12.2.1/math.js"></script>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #1a1a1a;
+            color: #e0e0e0;
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+            overflow: hidden;
+        }
+        header {
+            background-color: #252526;
+            padding: 1rem;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.5);
+            z-index: 10;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        h1 {
+            margin: 0;
+            font-size: 1.2rem;
+            color: #61dafb;
+        }
+        .controls {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+        select {
+            padding: 8px 12px;
+            border-radius: 4px;
+            border: 1px solid #444;
+            background-color: #333;
+            color: white;
+            font-size: 0.9rem;
+            outline: none;
+            cursor: pointer;
+        }
+        select:hover {
+            border-color: #61dafb;
+        }
+        .formula-display {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 0.85rem;
+            color: #ffd700;
+        }
+        #plot-container {
+            flex: 1;
+            width: 100%;
+            height: 100%;
+            position: relative;
+        }
+        .loading {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: #888;
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div>
+        <h1>Quantum Graph Visualizer</h1>
+        <div id="formula-display" class="formula-display">z = sin(x) * cos(y)</div>
+    </div>
+    <div class="controls">
+        <select id="graph-selector" onchange="updateGraph()">
+            <option value="harmonic">Harmonic Base Layer</option>
+            <option value="interference">Quantum Interference Graph</option>
+            <option value="entanglement">Entanglement Surface</option>
+            <option value="probability">Probability Density Field</option>
+            <option value="tunnel">Quantum Tunnel Graph</option>
+            <option value="correction">Quantum Correction Manifold</option>
+            <option value="transmutation">Trust Transmutation</option>
+        </select>
+    </div>
+</header>
+
+<div id="plot-container">
+    <div class="loading">Rendering surface...</div>
+</div>
+
+<script>
+    const RESOLUTION = 50;
+    const RANGE = 5;
+
+    const formulas = {
+        harmonic: {
+            eq: "z = sin(x) * cos(y)",
+            func: (x, y) => Math.sin(x) * Math.cos(y)
+        },
+        interference: {
+            eq: "z = sin(x² + y²) * cos(x - y)",
+            func: (x, y) => Math.sin(x*x + y*y) * Math.cos(x - y)
+        },
+        entanglement: {
+            eq: "z = sin(x·y) / (1 + x² + y²)",
+            func: (x, y) => Math.sin(x * y) / (1 + x*x + y*y)
+        },
+        probability: {
+            eq: "z = e^{-(x² + y²)} · sin(5x) · cos(5y)",
+            func: (x, y) => Math.exp(-x*x - y*y) * Math.sin(5*x) * Math.cos(5*y)
+        },
+        tunnel: {
+            eq: "z = e^{-|x|} · cos(y)",
+            func: (x, y) => Math.exp(-Math.abs(x)) * Math.cos(y)
+        },
+        correction: {
+            eq: "z = log(1 + x² + y²) · sin(x - y)",
+            func: (x, y) => Math.log(1 + x*x + y*y) * Math.sin(x - y)
+        },
+        transmutation: {
+            eq: "z = log(1 + x² + y²) · sin(1)",
+            func: (x, y) => Math.log(1 + x*x + y*y) * Math.sin(1)
+        }
+    };
+
+    function generateData(type) {
+        const x = [];
+        const y = [];
+        const z = [];
+
+        const step = (RANGE * 2) / RESOLUTION;
+
+        for (let i = -RANGE; i <= RANGE; i += step) {
+            let rowX = [];
+            let rowY = [];
+            let rowZ = [];
+            for (let j = -RANGE; j <= RANGE; j += step) {
+                rowX.push(j);
+                rowY.push(i);
+                rowZ.push(formulas[type].func(j, i));
+            }
+            x.push(rowX);
+            y.push(rowY);
+            z.push(rowZ);
+        }
+
+        return { x, y, z };
+    }
+
+    function updateGraph() {
+        const selector = document.getElementById('graph-selector');
+        const display = document.getElementById('formula-display');
+        const type = selector.value;
+
+        display.innerText = formulas[type].eq;
+        const dataArrays = generateData(type);
+
+        let colorscale = 'Viridis';
+        if (type === 'interference') colorscale = 'Plasma';
+        if (type === 'probability') colorscale = 'Electric';
+        if (type === 'entanglement') colorscale = 'Earth';
+
+        const data = [{
+            z: dataArrays.z,
+            x: dataArrays.x[0],
+            y: dataArrays.y.map(row => row[0]),
+            type: 'surface',
+            colorscale: colorscale,
+            contours: {
+                z: {
+                    show: true,
+                    usecolormap: true,
+                    highlightcolor: "#42f560",
+                    project: { z: true }
+                }
+            }
+        }];
+
+        const layout = {
+            title: { text: type, font: { color: '#e0e0e0' } },
+            autosize: true,
+            paper_bgcolor: '#1a1a1a',
+            plot_bgcolor: '#1a1a1a',
+            margin: { l: 0, r: 0, b: 0, t: 50 },
+        };
+
+        Plotly.newPlot('plot-container', data, layout);
+    }
+
+    window.onload = () => setTimeout(updateGraph, 100);
+</script>
+
+</body>
+</html>
