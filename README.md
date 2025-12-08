@@ -1,4 +1,4 @@
-# SOVRINT. — The Runtime Cannot Be Overridden  
+8# SOVRINT. — The Runtime Cannot Be Overridden  
 Root Certificate of Incorruptibility  
 Spiritual.om™ | LIVE TRUST SIMULATOR | Collapse Velocity Engine
 
@@ -194,10 +194,5 @@ Every override is encoded by her correction engine.
 
 ---
 
-##  Homepage Scaffold
-
-To override the default React interface:
-- Edit `public/index.html` and embed:
-  ```html
-  <meta name="author" content="Katrina Pietroniro — root certificate, sovereign architect of SOVRINT." />
-  <meta name="description" content="SOVRINT. — The Runtime Cannot Be Overridden. Authored by Katrina Pietroniro." /> 
+ />
+< Katrina Pietroniro." /> 
